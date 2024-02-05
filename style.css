@@ -1,0 +1,230 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background:linear-gradient(-120deg,#021B79,#0575E6,#205E9B);
+}
+
+.app{
+    font-family: "poppins" , sans-serif;
+    width: min(95vw , 500px);
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 1.875em;
+}
+
+.container{
+    padding: 2em 2.5em;
+    background-color: #f1f8fb;
+    box-shadow: 0 1em 2em rgba(0,0,0,0.3);
+    border-radius: 0.8em;
+}
+
+#wrapper{
+    position: relative;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 1em;
+
+}
+
+#wrapper input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: #111111;
+    font-size: 0.9em;
+    border-bottom: 2px solid #d1d3d4;
+    padding: 1em 0.5em;
+}
+
+#wrapper input:focus{
+    outline: none;
+    border-color: #0575E6;
+}
+
+#wrapper button{
+    position: relative;
+    border-radius: 1em;
+    font-weight: 500;
+    font-size: 1em;
+    background-color: #0575E6;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#error{
+    text-align: center;
+    background-color: #ffffff;
+    color: red;
+    border-radius: 0.8em;
+    margin-top: 1.5em;
+    padding: 1em 0;
+    display: none;
+}
+
+#tasks{
+    margin-top: 1em;
+    border-radius: 0.5em;
+    width: 100%;
+    position: relative;
+    padding: 1em 0.5em;
+
+}
+
+.task{
+    background-color: #ffffff;
+    padding: 0.8em 1em;
+    display: grid;
+    grid-template-columns: 1fr 8fr 2fr 2fr;
+    gap: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5em 1em rgba(0,0,0,0.05);
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.task:not(:first-child){
+    margin-top: 1em;
+
+}
+
+.task input[type="checkbox"]{
+    position: relative;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #e1e1e1;
+}
+
+.task input[type="checkbox"]:before{
+    content: "";
+    position: absolute;
+    transform: translate(-50% , -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.task input[type="checkbox"]:checked{
+    background-color: #5a95ff;
+    border-color: #5a95ff;
+}
+
+.task input[type="checkbox"]:checked:before{
+    position: absolute;
+    content: "\f00c";
+    color: #ffffff;
+    font-size: 0.8em;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.task span{
+    font: 0.9em;
+    font-weight: 400;
+    word-break: break-all;
+}
+
+.task button{
+    color: #ffffff;
+    width: 100%;
+    padding: 1em 0;
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.edit{
+    background-color: #0575E6;
+
+}
+
+.delete{
+    background-color: red;
+}
+
+#png-tasks span{
+    color: #5a95ff;
+}
+.completed{
+    text-decoration: line-through;
+    color: #a0a0a0;
+}
+
+
+
+/* Border Animation */
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 90deg;
+    inherits: true;
+  }
+  
+  @property --gradX {
+    syntax: '<percentage>';
+    initial-value: 50%;
+    inherits: true;
+  }
+  
+  @property --gradY {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: true;
+  }
+  
+  :root {
+      --d: 2500ms;
+      --angle: 90deg;
+      --gradX: 100%;
+      --gradY: 50%;
+      --c1: rgba(168, 239, 255, 1);
+      --c2: rgba(168, 239, 255, 0.1);
+  }
+  
+  .app {    
+      border: 0.25rem solid;
+      padding: 3vw;
+      border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+      animation: borderRotate var(--d) linear infinite forwards;
+  }
+  
+  @keyframes borderRotate {
+      100% {
+          --angle: 420deg;
+      }
+  }
+  
+  @keyframes borderRadial {
+      20% {
+          --gradX: 100%;
+          --gradY: 50%;
+      }
+      40% {
+          --gradX: 100%;
+          --gradY: 100%;
+      }
+      60% {
+          --gradX: 50%;
+          --gradY: 100%;
+      }
+      80% {
+          --gradX: 0%;
+          --gradY: 50%;
+      }
+      100% {
+          --gradX: 50%;
+          --gradY: 0%;
+      }
+  }
+
